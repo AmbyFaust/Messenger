@@ -44,6 +44,10 @@ class Server(Socket):
                 if len(name_channel) > 30 or len(name_channel) < 4:
                     print('Error: chars > 30 or chars < 4 ')
                     continue
+                if self.find_channel(name_channel):
+                    print('Error: such a channel already exists')
+                    continue
+
                 new_channel = Channel(name_channel)
                 self.channels.append(new_channel)
                 print(f'Channel with name <{name_channel}> was created')
@@ -180,6 +184,3 @@ class Server(Socket):
 if __name__ == '__main__':
     server = Server()
     server.set_up()
-
-
-#                  py C:\Users\user\Desktop\Messenger\client.py
